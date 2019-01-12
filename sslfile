@@ -1,0 +1,15 @@
+generate  key:-
+$openssl genrsa -out name_of_key.key 2048
+
+generate CSR requist:
+
+$openssl -new -key name_of_key.key -out name_of_csr.csr -subj "/C=US/ST=NC/L=Raleigh/O=RedHat/OU=RHT/CN=hello.127.0.0.1.nip.io"
+
+(Note: "hello.127.0.0.1.nip.io" is hostname of route , its different as your hostname)
+(127.0.0.1.nip.io is domain name)
+
+generate Certificate:- 
+
+$openssl x509 -req -days 366 -in name_of_csr.csr -signkey name_of_key.key -out name_of_cert.crt
+
+ 
